@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+Meet App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app will be serverless and will use PWAs
 
-## Available Scripts
+Features
 
-In the project directory, you can run:
+Filter events bt City
+As a user,
+I should be able to write the name of a city
+so that I can select a city from a suggested list
 
-### `npm start`
+Given: The user is browsing the main page.
+When: The user enters the name of a city on the search box.
+Then: The gets a list of cities with the name written.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Show/Hide Event Details
+As a user,
+I should be able to click the buttons
+So that I can see details of the event.
 
-### `npm test`
+Given: The user is viewing the event details page.
+When: The user clicks on a button to activate a function.
+Then: The event details shows.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+Specify Number of Events
+As a user,
+I should be able to change the number of events
+So that I can view that specific number of events on the page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Given: The user is on the events page
+When: The user put a number from a filter to see the amount of events displayed.
+Then: The events listing showes the selected amount
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Use the App When Offline
+As a user,
+I sshould be able to use the app with no connection
+So I can check the information of the saved events
 
-### `npm run eject`
+Given: The user can use the app and save events
+When: The user loses the internet connection.
+Then: the previously viewed events still shows
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Add an App Shortcut to the Home Screen
+As a user,
+I should be able to have an option to add an app icon on the home screen.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Given: The user has installed the app on their phone
+When: The user presses add shortcut button to home screen
+Then: The app will be shown on the home screen.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+Display Charts Visualizing Event Details
+As a user,
+I should be able to click on a button
+That shows the event details on a chart.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Given: The user is viewing the event list page.
+When: The user taps on a "View Charts" button.
+Then: A chart will render showing details of the event
