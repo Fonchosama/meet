@@ -5,10 +5,10 @@ service: auth-server
 
 provider:
   name: aws
-  runtime: nodejs20.x #posible fallo por versión, revisar si da error y sino borrar 
+  runtime: nodejs20.x #posible fallo por versión, revisar si da error y sino borrar
   region: eu-central-1
   timeout: 30 # optional, in seconds, default is 6
-   environment:
+  environment:
     CLIENT_ID: ${file(config.json):CLIENT_ID}
     CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
     CALENDAR_ID: ${file(config.json):CALENDAR_ID}
