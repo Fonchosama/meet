@@ -75,7 +75,9 @@ module.exports.getAccessToken = async (event) => {
 };
 
 module.exports.getCalendarEvents = async (event) => {
-  const access_token = decodeURIComponent(`${event.pathParameters.code}`); //Declare an access_token variable and get the token using the same method you used to get the code in the getAccessToken() function.
+  const access_token = decodeURIComponent(
+    `${event.pathParameters.access_token}`
+  ); //Declare an access_token variable and get the token using the same method you used to get the code in the getAccessToken() function.
   oAuth2Client.setCredentials({ access_token }); // et the access token as credentials in oAuth2Client like so: oAuth2Client.setCredentials({ access_token }); right after the line where you declared access_token.
 
   return new Promise((resolve, reject) => {
