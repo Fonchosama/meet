@@ -73,3 +73,47 @@ module.exports.getAccessToken = async (event) => {
       };
     });
 };
+
+module.exports.getCalendarEvents = async (event) => {
+  const access_token = decodeURIComponent(
+    `${event.pathParameters.access_token}`
+  ); //Declare an access_token variable and get the token using the same method you used to get the code in the getAccessToken() function.
+  oAuth2Client.setCredentials({ access_token }); // et the access token as credentials in oAuth2Client like so: oAuth2Client.setCredentials({ access_token }); right after the line where you declared access_token.
+
+  return new Promise((resolve, reject) => {
+    //Step 4: Code your asynchronous logic.
+    calendar.events.list(
+      {
+        calendarId: CALENDAR_ID,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: 'startTime',
+      },
+      (error, response) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(response);
+      }
+    );
+  })
+    .then((results) => {
+      // Step 5: Declare what happens when the promise is resolved.
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
+        body: JSON.stringify({ events: results.data.items }),
+      };
+    })
+    .catch((error) => {
+      // Handle error ... Step 6: Code your error handling logic.
+      return {
+        statusCode: 500,
+        body: JSON.stringify(error),
+      };
+    });
+};
