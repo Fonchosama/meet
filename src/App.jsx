@@ -1,7 +1,13 @@
+// src/App.jsx
 import React from 'react';
 
-function App() {
-  return <div></div>;
-}
+import EventList from './components/EventList';
+const App = () => {
+  return (
+    <div className="App">
+      <EventList />
+    </div>
+  );
+};
 
 export default App;
