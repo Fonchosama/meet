@@ -1,8 +1,8 @@
-// src/components/EventList.js
+// src/components/EventList.jsx
 import React from 'react';
 
 const EventList = () => {
-  return <div id="event-list"></div>;
+  return <ul id="event-list"></ul>;
 };
 
 export default EventList;
