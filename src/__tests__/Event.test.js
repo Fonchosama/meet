@@ -32,4 +32,39 @@ describe('<Event /> component', () => {
     const detailButton = EventComponent.queryByText('Show Details');
     expect(detailButton).toBeInTheDocument();
   });
+
+  // exercise 5
+
+  // Scenario 1
+  test("event's details are hidden by default", () => {
+    const eventDetails = EventComponent.container.querySelector('.details');
+    expect(eventDetails).not.toBeInTheDocument();
+  });
+
+  // Scenario 2
+  test('show details after user clicks on button "Show Details"', async () => {
+    const user = userEvent.setup();
+
+    const showDetailButton = EventComponent.queryByText('Show Details');
+    await user.click(showDetailButton);
+
+    const eventDetailsDom = EventComponent.container.firstChild;
+    const eventDetails = eventDetailsDom.querySelector('.eventDetails');
+    expect(eventDetails).toBeInTheDocument();
+  });
+
+  // Scenario 3
+  test('hide details after use clicks on button "Hide details', async () => {
+    const user = userEvent.setup();
+
+    const showDetailButton = EventComponent.queryByText('Show Details');
+    await user.click(showDetailButton);
+
+    const hideDetailButton = EventComponent.queryByText('Hide Details');
+    await user.click(hideDetailButton);
+
+    const eventDetailsDom = EventComponent.container.firstChild;
+    const eventDetails = eventDetailsDom.querySelector('.eventDetails');
+    expect(eventDetails).not.toBeInTheDocument();
+  });
 });
