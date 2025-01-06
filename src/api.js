@@ -16,19 +16,6 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-const checkToken = async (accessToken) => {
-  const response = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-  );
-  const result = await response.json();
-  return result;
-};
-
-/**
- *
- * This function will fetch the list of all events
- */
-
 const removeQuery = () => {
   let newurl;
   if (window.history.pushState && window.location.pathname) {
@@ -45,20 +32,18 @@ const removeQuery = () => {
 };
 // this function will remove the code from the URL once is used it
 
-const getToken = async (code) => {
-  const encodeCode = encodeURIComponent(code);
+const checkToken = async (accessToken) => {
   const response = await fetch(
-    'https://2ec5nwywrk.execute-api.eu-central-1.amazonaws.com/dev/api/token' +
-      '/' +
-      encodeCode
+    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   );
-  const { access_token } = await response.json();
-  access_token && localStorage.setItem('access_token', access_token);
-
-  // This function takes the code and encode it using the encodeURIComponent
-
-  return access_token;
+  const result = await response.json();
+  return result;
 };
+
+/**
+ *
+ * This function will fetch the list of all events
+ */
 
 export const getEvents = async () => {
   if (window.location.href.startsWith('http://localhost')) {
@@ -79,6 +64,21 @@ export const getEvents = async () => {
       return result.events;
     } else return null;
   }
+};
+
+const getToken = async (code) => {
+  const encodeCode = encodeURIComponent(code);
+  const response = await fetch(
+    'https://2ec5nwywrk.execute-api.eu-central-1.amazonaws.com/dev/api/token' +
+      '/' +
+      encodeCode
+  );
+  const { access_token } = await response.json();
+  access_token && localStorage.setItem('access_token', access_token);
+
+  // This function takes the code and encode it using the encodeURIComponent
+
+  return access_token;
 };
 
 export const getAccessToken = async () => {
