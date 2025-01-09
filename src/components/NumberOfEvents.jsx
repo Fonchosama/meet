@@ -1,11 +1,12 @@
 // src/components/NumberOfEvents.jsx
 import React, { useState } from 'react';
 
-const NumberOfEvents = () => {
+const NumberOfEvents = ({ setCurrentNOE }) => {
   const [eventCount, setEventCount] = useState(32); // Valor inicial por defecto
 
   const handleChange = (e) => {
     setEventCount(e.target.value);
+    setCurrentNOE(e.target.value);
   };
 
   return (
