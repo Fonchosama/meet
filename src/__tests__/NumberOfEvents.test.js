@@ -18,10 +18,12 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('value changes when user types', async () => {
+    const setCurrentNOE = jest.fn(); // Crear una función ficticia
     const user = userEvent.setup();
-    render(<NumberOfEvents />);
-    const inputElement = screen.getByRole('spinbutton'); // Cambiado a "spinbutton"
+    render(<NumberOfEvents setCurrentNOE={setCurrentNOE} />); // Pasar la función mock como prop
+    const inputElement = screen.getByRole('spinbutton');
     await user.type(inputElement, '{backspace}{backspace}10'); // Simula escribir "10"
     expect(inputElement.value).toBe('10'); // Verifica el nuevo valor
+    expect(setCurrentNOE).toHaveBeenCalledWith(10); // Verifica que la función se haya llamado con el valor correcto
   });
 });

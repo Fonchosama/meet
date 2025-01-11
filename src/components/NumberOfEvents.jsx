@@ -5,8 +5,12 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
   const [eventCount, setEventCount] = useState(32); // Valor inicial por defecto
 
   const handleChange = (e) => {
-    setEventCount(e.target.value);
-    setCurrentNOE(e.target.value);
+    const value = e.target.value;
+    if (!isNaN(value) && value >= 0) {
+      // Solo números y valores positivos
+      setEventCount(value); // Mantener el valor como string
+      setCurrentNOE(parseInt(value, 10)); // Convertir el valor a número al pasar a setCurrentNOE
+    }
   };
 
   return (
