@@ -10,7 +10,10 @@ defineFeature(feature, (test) => {
   }) => {
     given('user hasn’t searched for any city', () => {});
 
-    when('the user opens the app', () => {});
+    let AppComponent;
+    when('the user opens the app', () => {
+      AppComponent = render(<App />);
+    });
 
     then('the user should see the list of all upcoming events.', () => {});
   });
