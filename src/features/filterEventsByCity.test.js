@@ -37,7 +37,7 @@ defineFeature(feature, (test) => {
     }) => {
       let AppComponent;
       given('the main page is open', () => {
-        AppComponent = render(<Aoo />);
+        AppComponent = render(<App />);
       });
 
       let CitySearchDOM;
@@ -51,7 +51,11 @@ defineFeature(feature, (test) => {
 
       then(
         'the user should receive a list of cities (suggestions) that match what they’ve typed',
-        () => {}
+        async () => {
+          const suggestionListItems =
+            within(CitySearchDOM).queryAllByRole('listitem');
+          expect(suggestionListItems).toHaveLength(2);
+        }
       );
     });
 
