@@ -3,6 +3,7 @@ import React from 'react';
 import { render, within, waitFor } from '@testing-library/react';
 import App from '../App';
 import { getEvents } from '../mock-data';
+import userEvent from '@testing-library/user-event';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
@@ -34,9 +35,19 @@ defineFeature(feature, (test) => {
       when,
       then,
     }) => {
-      given('the main page is open', () => {});
+      let AppComponent;
+      given('the main page is open', () => {
+        AppComponent = render(<Aoo />);
+      });
 
-      when('user starts typing in the city textbox', () => {});
+      let CitySearchDOM;
+      when('user starts typing in the city textbox', async () => {
+        const user = userEvent.setup();
+        const AppDOM = AppComponent.container.firstChild;
+        CitySearchDOM = AppDOM.querySelector('#city-search');
+        const citySearchInput = within(CitySearchDOM).queryByRole('textbox');
+        await user.type(citySearchInput, 'Berlin');
+      });
 
       then(
         'the user should receive a list of cities (suggestions) that match what they’ve typed',
