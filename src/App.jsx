@@ -14,7 +14,7 @@ const App = () => {
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState('See all cities');
   const [infoAlert, setInfoAlert] = useState('');
-  const [warningAlert, setWarningAlert] = useState('');
+  const [errorAlert, setErrorAlert] = useState('');
 
   useEffect(() => {
     fetchData();
@@ -41,7 +41,11 @@ const App = () => {
         setCurrentCity={setCurrentCity}
         setInfoAlert={setInfoAlert}
       />
-      <NumberOfEvents setCurrentNOE={setCurrentNOE} currentNOE={currentNOE} />
+      <NumberOfEvents
+        setCurrentNOE={setCurrentNOE}
+        currentNOE={currentNOE}
+        setErrorAlert={setErrorAlert}
+      />
       <EventList events={events} />
     </div>
   );
