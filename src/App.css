@@ -113,3 +113,11 @@ button:focus {
   outline: none; /* Eliminar el borde de enfoque */
   box-shadow: 0 0 0 2px #388e3c; /* Resaltar el botón con una sombra verde */
 }
+
+.alerts-container {
+  position: fixed;
+  top: 0px;
+  left: 20px;
+  width: 250px;
+  z-index: 1000;
+}
