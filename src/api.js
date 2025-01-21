@@ -60,7 +60,7 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url =
-      'https://u7ki2qrqc3.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/' +
+      'https://2ec5nwywrk.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' + //poner el tuyo
       token;
     const response = await fetch(url);
     const result = await response.json();
