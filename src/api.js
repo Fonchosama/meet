@@ -66,21 +66,6 @@ export const getEvents = async () => {
   }
 };
 
-// const getToken = async (code) => {
-//   const encodeCode = encodeURIComponent(code);
-//   const response = await fetch(
-//     'https://2ec5nwywrk.execute-api.eu-central-1.amazonaws.com/dev/api/token' +
-//       '/' +
-//       encodeCode
-//   );
-//   const { access_token } = await response.json();
-//   access_token && localStorage.setItem('access_token', access_token);
-
-//   // This function takes the code and encode it using the encodeURIComponent
-
-//   return access_token;
-// };
-
 const getToken = async (code) => {
   try {
     const encodeCode = encodeURIComponent(code);
