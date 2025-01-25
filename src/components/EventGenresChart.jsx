@@ -8,3 +8,5 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+
+export default EventsGenresChart;
