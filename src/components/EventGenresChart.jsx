@@ -9,19 +9,38 @@ import {
 } from 'recharts';
 
 const EventGenresChart = ({ events }) => {
-  const data = [
-    { name: 'Rock', value: 400 },
-    { name: 'Pop', value: 300 },
-    { name: 'Jazz', value: 300 },
-    { name: 'Hip-Hop', value: 200 },
-  ];
+  const [data, setData] = useState([]);
+  const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  useEffect(() => {
+    setData(getData());
+  }, [`${events}`]);
+
+  const getData = () => {
+    const data = genres.map((genre) => {
+      const filteredEvents = events.filter((event) =>
+        event.summary.includes(genre)
+      );
+      return {
+        name: genre,
+        value: filteredEvents.length,
+      };
+    });
+    return data;
+  };
 
   return (
     <ResponsiveContainer width="99%" height={400}>
       <PieChart>
-        <Pie dataKey="value" data={data} fill="#8884d8" label />
+        <Pie
+          data={data}
+          dataKey="value"
+          fill="#8884d8"
+          labelLine={false}
+          label
+          outerRadius={130}
+        />
+        <Tooltip />
       </PieChart>
     </ResponsiveContainer>
   );
