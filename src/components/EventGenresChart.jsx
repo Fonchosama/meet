@@ -9,4 +9,6 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+const EventGenresChart = ({ events }) => {};
+
 export default EventsGenresChart;
